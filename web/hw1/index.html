@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/fa62c117c7.js" crossorigin="anonymous"></script>
   <!-- BEGIN PART 1 -->
+  <link rel="stylesheet" href="styles.css" />
+  <title>Leo Huang</title>
   <!-- END PART 1 -->
 </head>
 
@@ -17,7 +19,7 @@
   <header class="header center">
     <!-- BEGIN PART 2 -->
     <h3>
-
+      <a class="link" href="/hw1">LH</a>
     </h3>
     <!-- END PART 2 -->
     <nav class="nav center">
@@ -39,23 +41,24 @@
         <i id="btn-theme" class="fas fa-moon"></i>
       </button>
 
-      <!-- 
-        5.1: What does this button tag correspond to on the site? 
-      
-      
+      <!--
+        5.1: What does this button tag correspond to on the site?
+
+        Button tag corresponds to Light/Dark Theme toggle
       -->
 
       <button type="button" aria-label="toggle navigation" class="btn btn--icon nav__hamburger">
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- 
+      <!--
         5.2: Try Ctrl-F in styles.css and look the class 'nav__hamburger'. You'll notice that it
         appears in 2 places. Why is one of the rules 'display: none' on one instance? How do you
-        make it so that this button appears on screen? 
+        make it so that this button appears on screen?
         Hint: remember what @media (max-width: 600px) means.
 
-
+        One is display: none when the screen is big enough to fit the menu items.
+        Narrowing the screen to < 600px makes the hamburger button appear
        -->
 
       <!-- END PART 5 -->
@@ -65,6 +68,10 @@
   <main>
     <div class="about center">
       <!-- BEGIN PART 6 -->
+      <h1>Hi I'm <span class="about__name"> Leo </span></h1>
+      <h2 class="about__role">BioEECS at UC Berkeley</h2>
+      <p class="about__desc">Bio</p>
+
       <!-- END PART 6 -->
       <div class="about__contact center">
         <a href="https://example.com">
@@ -104,6 +111,46 @@
             <i aria-hidden="true" class="fas fa-external-link-alt"></i>
           </a>
         </div>
+        <div class="project">
+          <h3>Project 1</h3>
+          <p class="project__description">
+            Ipsum accusamus ea excepturi aliquid eligendi amet. Explicabo
+            sapiente debitis labore sed ipsam Mollitia repellat illum quod
+            unde beatae Quis
+          </p>
+          <ul class="project__stack">
+            <li class="project__stack-item">Python</li>
+            <li class="project__stack-item">Java</li>
+            <li class="project__stack-item">JavaScript</li>
+          </ul>
+
+          <a href="https://github.com" aria-label="source code" class="link link--icon">
+            <i aria-hidden="true" class="fab fa-github"></i>
+          </a>
+          <a href="https://example.com" aria-label="live preview" class="link link--icon">
+            <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+        <div class="project">
+          <h3>Project 1</h3>
+          <p class="project__description">
+            Ipsum accusamus ea excepturi aliquid eligendi amet. Explicabo
+            sapiente debitis labore sed ipsam Mollitia repellat illum quod
+            unde beatae Quis
+          </p>
+          <ul class="project__stack">
+            <li class="project__stack-item">Python</li>
+            <li class="project__stack-item">Java</li>
+            <li class="project__stack-item">JavaScript</li>
+          </ul>
+
+          <a href="https://github.com" aria-label="source code" class="link link--icon">
+            <i aria-hidden="true" class="fab fa-github"></i>
+          </a>
+          <a href="https://example.com" aria-label="live preview" class="link link--icon">
+            <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
         <!-- END PART 8 -->
       </div>
     </section>
@@ -113,9 +160,9 @@
       <!-- BEGIN PART 10 -->
       <h2 class="section__title">Skills</h2>
       <ul class="skills__list">
-        <li class="skills__list-item btn btn--plain"></li>
-        <li class="skills__list-item btn btn--plain"></li>
-        <li class="skills__list-item btn btn--plain"></li>
+        <li class="skills__list-item btn btn--plain">Java</li>
+        <li class="skills__list-item btn btn--plain">Python</li>
+        <li class="skills__list-item btn btn--plain">HTML/CSS</li>
       </ul>
       <!-- END PART 10 -->
     </section>
@@ -130,7 +177,7 @@
   <footer class="footer">
     <!-- BEGIN PART 12 -->
     <a href="/" class="link footer__link">
-      Created By Your Name
+      Created By Leo Huang
     </a>
     <!-- END PART 12 -->
   </footer>
