@@ -322,6 +322,10 @@ main {
   margin-top: 1em;
 }
 
+.project__list {
+  text-align: left;
+}
+
 .project__stack {
   display: flex;
   flex-wrap: wrap;
