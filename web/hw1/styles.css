@@ -213,6 +213,11 @@ button {
 
 /* BEGIN PART 3 */
 
+.left {
+  display: flex;
+  justify-content: left;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -284,6 +289,7 @@ main {
 .about__desc,
 .about__contact {
   margin-top: 2.4em;
+  float: left;
 }
 
 .about .link--icon {
