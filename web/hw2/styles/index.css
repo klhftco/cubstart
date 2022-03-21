@@ -16,6 +16,11 @@ body {
   align-items: center;
 }
 
+/* PART 9 */
+#navbar :hover {
+  color: bisque;
+}
+
 #navbar > * {
   font-size: 15px;
   position: relative;

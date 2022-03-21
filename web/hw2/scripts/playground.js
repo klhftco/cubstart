@@ -24,7 +24,6 @@ const taskList = document.getElementById("tasks");
 // END PART 5
 
 // BEGIN PART 6
-
 submitButton.addEventListener("click", () => {
   if (taskName.value != "") {
     const task = document.createElement("li");
@@ -37,11 +36,16 @@ clearButton.addEventListener("click", () => {
   taskList.replaceChildren();
   taskName.value = "";
 });
-
 // END PART 6
 
 taskName.addEventListener("input", () => {
   if (taskName.value == "Cal Hacks") {
     countDisplay.style.color = "steelblue";
+  }
+});
+// PART 9
+taskName.addEventListener("input", () => {
+  if (taskName.value != "Cal Hacks") {
+    countDisplay.style.color = "coral";
   }
 });
