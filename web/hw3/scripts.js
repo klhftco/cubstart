@@ -1,6 +1,8 @@
 const runCoco = async () => {
     // BEGIN PART 3
-
+    const net = awaist cocoSsd.load();
+    console.log("Loading neural net completed");
+    detect(net);
     // END PART 3
 };
 
@@ -12,17 +14,18 @@ const detect = async (net) => {
     // Set canvas height and width
     const canvas = document.getElementById("mesh");
     // BEGIN PART 4
-
+    const canWidth = imgWidth;
+    const canHeight = imgHeight;
     // END PART 4
 
     // Make predictions
     // BEGIN PART 5
-
+    const obj = await net.detect(img);
     // END PART 5
 
     // Draw mesh
     // BEGIN PART 6
-
+    const ctx = canvas.getContext("2d");
     // END PART 6
     drawRect(obj, ctx);
     // Generate caption
@@ -54,7 +57,14 @@ const drawRect = (predictions, ctx) => {
 
 const getCaption = (predictions) => {
     // BEGIN PART 7
-
+    predictions.forEach(async (prediction) => {
+      const caption = document.getElementById("caption");
+      const entity = prediction["class"];
+      const accessToken = "TOKEN";
+      const response = await axios.get('https://owlbot.info/api/v4/dictionary/${entity}',
+      { headers: { Authorization: 'Token ${accessToken}' } }
+      );
+    })
     // END PART 7
 }
 
