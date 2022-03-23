@@ -1,6 +1,6 @@
 const runCoco = async () => {
     // BEGIN PART 3
-    const net = awaist cocoSsd.load();
+    const net = await cocoSsd.load();
     console.log("Loading neural net completed");
     detect(net);
     // END PART 3
@@ -14,8 +14,8 @@ const detect = async (net) => {
     // Set canvas height and width
     const canvas = document.getElementById("mesh");
     // BEGIN PART 4
-    const canWidth = imgWidth;
-    const canHeight = imgHeight;
+    canvas.width = imgWidth;
+    canvas.height = imgHeight;
     // END PART 4
 
     // Make predictions
@@ -59,11 +59,35 @@ const getCaption = (predictions) => {
     // BEGIN PART 7
     predictions.forEach(async (prediction) => {
       const caption = document.getElementById("caption");
-      const entity = prediction["class"];
-      const accessToken = "TOKEN";
-      const response = await axios.get('https://owlbot.info/api/v4/dictionary/${entity}',
-      { headers: { Authorization: 'Token ${accessToken}' } }
-      );
+        const entity = prediction["class"];
+        try {
+            // Access token provided
+            const accessToken = "107c2bf6adea00bb461de259c161f80d843ffe94";
+            // Store the response from GET request
+            const response = await axios.get(
+            `https://owlbot.info/api/v4/dictionary/${entity}`,
+            { headers: { Authorization: `Token ${accessToken}` } }
+            );
+            // Retrieve the data portion of the response
+            const data = response.data;
+            // From the data, get the first entry of the definitions
+            const entry = data.definitions[0];
+            let lineText;
+            if (entry.example) {
+                lineText = entry.example;
+            } else {
+                lineText = entry.definition;
+            }
+            if (entry.emoji) {
+                lineText += " " + entry.emoji;
+            }
+            lineText += " #" + entity;
+            const line = document.createElement("p");
+            line.innerText = lineText;
+            caption.appendChild(line);
+        } catch (error) {
+            console.log(error);
+        }
     })
     // END PART 7
 }
@@ -71,12 +95,13 @@ const getCaption = (predictions) => {
 // BEGIN PART 8
 // "input" is current undefined, since it hasn't been initialized yet.
 // Initialize it here to the appropriate element on the HTML document.
-
+const input = document.getElementById("img-upload");
 input.addEventListener("change", (event) => {
     const caption = document.getElementById("caption");
     caption.replaceChildren();
     const img = document.getElementById("img");
     img.src = URL.createObjectURL(event.target.files[0])
     // What should you run to drive the execuation of all your functions?
+    runCoco();
 })
 // END PART 8
