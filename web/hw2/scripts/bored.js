@@ -3,7 +3,7 @@ const card = document.getElementById("card");
 
 // BEGIN PART 7
 async function fetchActivity() {
-  const response = await fetch("https://www.boredapi.com/api/activity");
+  const response = await fetch("https://www.boredapi.com/api/activity/");
   const activity = await response.json();
   return activity;
 }

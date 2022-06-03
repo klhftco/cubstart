@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 #bored-button {
@@ -12,4 +13,19 @@
 /* PART 9 */
 .button:hover {
   background-color: chocolate;
+}
+
+#card {
+  background-color: #83CEEB;
+  border: none;
+  color: #838A67;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 1.5em;
+  margin: 1em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: 2px 4px 10px rgb(0, 0, 0, 0.5);
 }
