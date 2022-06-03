@@ -21,6 +21,7 @@ const detect = async (net) => {
     // Make predictions
     // BEGIN PART 5
     const obj = await net.detect(img);
+    console.log(obj)
     // END PART 5
 
     // Draw mesh
@@ -70,6 +71,7 @@ const getCaption = (predictions) => {
             );
             // Retrieve the data portion of the response
             const data = response.data;
+            console.log(data)
             // From the data, get the first entry of the definitions
             const entry = data.definitions[0];
             let lineText;

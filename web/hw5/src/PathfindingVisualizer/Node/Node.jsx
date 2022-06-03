@@ -4,9 +4,32 @@ import "./Node.css";
 
 // BEGIN PART 3
 
-const Node = (/* YOUR CODE HERE */) => {
+const Node = (props) => {
   // YOUR CODE HERE
-  return <div /* YOUR CODE HERE */></div>;
+  const col = props.col;
+  const isFinish = props.isFinish;
+  const isStart = props.isStart;
+  const isWall = props.isWall;
+  const onMouseDown = props.onMouseDown;
+  const onMouseEnter = props.onMouseEnter;
+  const onMouseUp = props.onMouseUp;
+  const row = props.row;
+
+  const extraClassName =
+    isFinish ? "node-finish"
+    : isStart ? "node-start"
+    : isWall ? "node-wall"
+    : "";
+
+  return (
+    <div
+      id={`node-${row}-${col}`}
+      className={`node ${extraClassName}`}
+      onMouseDown={() => onMouseDown(row, col)}
+      onMouseEnter={() => onMouseEnter(row, col)}
+      onMouseUp={() => onMouseUp()}>
+    </div>
+  );
 };
 
 // END PART 3

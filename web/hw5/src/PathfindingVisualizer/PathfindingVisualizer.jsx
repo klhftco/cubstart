@@ -11,8 +11,28 @@ const FINISH_NODE_COL = 49;
 
 const PathfindingVisualizer = () => {
   // BEGIN PART 5
+  const [grid, setGrid] = useState(getInitialGrid());
+  const [mouseIsPressed, setMouseIsPressed] = useState(false);
+
 
   // YOUR CODE HERE
+  const handleMouseDown = (row, col) => {
+    const newGrid = getNewGridWithWallToggled(grid, row, col);
+    setGrid(newGrid);
+    setMouseIsPressed(true);
+  };
+
+  const handleMouseEnter = (row, col) => {
+    if (!mouseIsPressed) {
+      return;
+    }
+    const newGrid = getNewGridWithWallToggled(grid, row, col);
+    setGrid(newGrid)
+  };
+
+  const handleMouseUp = () => {
+    setMouseIsPressed(false);
+  };
 
   // END PART 5
 
@@ -20,22 +40,36 @@ const PathfindingVisualizer = () => {
 
   const animateDijkstra = (visitedNodesInOrder, nodesInShortestPathOrder) => {
     for (let i = 0; i <= visitedNodesInOrder.length; i++) {
-      // YOUR CODE HERE
+      if (i === visitedNodesInOrder.length) {
+        setTimeout(() => {
+          animateShortestPath(nodesInShortestPathOrder);
+        }, 10 * i);
+        return;
+      }
+      setTimeout(() => {
+        const node = visitedNodesInOrder[i];
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node node-visited";
+      }, 10 * i);
     }
   };
 
   const animateShortestPath = (nodesInShortestPathOrder) => {
     for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
-      // YOUR CODE HERE
+      setTimeout(() => {
+        const node = nodesInShortestPathOrder[i];
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node node-shortest-path";
+      }, 50 * i);
     }
   };
 
   const visualizeDijkstra = () => {
-    // const startNode = YOUR CODE HERE
-    // const finishNode = YOUR CODE HERE
-    // const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
-    // const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-    // animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+    const startNode = grid[START_NODE_ROW][START_NODE_COL];
+    const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+    const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+    const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   };
 
   return (
@@ -44,7 +78,7 @@ const PathfindingVisualizer = () => {
         Visualize Dijkstra's Algorithm
       </button>
       <div className="grid">
-        {/* {grid.map((row, rowIdx) => {
+        {grid.map((row, rowIdx) => {
           return (
             <div key={rowIdx}>
               {row.map((node, nodeIdx) => {
@@ -66,7 +100,7 @@ const PathfindingVisualizer = () => {
               })}
             </div>
           );
-        })} */}
+        })}
       </div>
     </>
   );
@@ -89,6 +123,7 @@ const getInitialGrid = () => {
 };
 
 // YOUR ANSWER HERE
+// create grid of nodes of size 20x50
 
 const createNode = (col, row) => {
   return {
@@ -104,6 +139,7 @@ const createNode = (col, row) => {
 };
 
 // YOUR ANSWER HERE
+// generate props for node creation
 
 const getNewGridWithWallToggled = (grid, row, col) => {
   const newGrid = grid.slice(); // Creates a shallow copy
@@ -117,6 +153,7 @@ const getNewGridWithWallToggled = (grid, row, col) => {
 };
 
 // YOUR ANSWER HERE
+// detect whether node is wall or not to toggle behavior when mouse event
 
 // END PART 4
 
