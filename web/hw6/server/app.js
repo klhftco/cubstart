@@ -30,11 +30,13 @@ const app = express();
 app.use(cors());
 
 // QUESTION 1
-app.get('/videos', (req, res) => "REPLACE WITH YOUR CODE");
+app.get('/videos', (req, res) => {
+  res.send(videosMetadata);
+});
 
 app.get('/video/:id', (req, res) => {
   // QUESTION 3
-  const path = 'REPLACE WITH YOUR CODE';
+  const path = './assets/' + req.params['id'] + '.mp4';
   const stat = fs.statSync(path);
   const fileSize = stat.size;
   const range = req.headers.range;
@@ -66,9 +68,20 @@ app.get('/video/:id', (req, res) => {
 
 // QUESTION 4
 // REPLACE WITH YOUR CODE
+app.get('/video/:id/data', (req, res) => {
+  videoData = videosMetadata.find(obj => {
+    return obj.id === req.params['id']
+  })
+  res.send(videoData)
+});
 
 // QUESTION 7
 // REPLACE WITH YOUR CODE
+app.get('/video/:id/thumbnail', (req, res) => {
+  const path = './assets/' + req.params['id'] + '.mp4';
+  const img = thumbsupply.generateThumbnail(path);
+  res.send(img);
+});
 
 app.listen(4000, () => {
   console.log('Listening on port 4000!');

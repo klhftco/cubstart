@@ -8,10 +8,12 @@ const Home = () => {
   // eslint-disable-next-line no-unused-vars
   const [videoData, setVideoData] = useState({});
 
-  useEffect(() => {
+  useEffect(async () => {
     try {
       // QUESTION 5
-      // REPLACE WITH YOUR CODE
+      const resp = await fetch('http://localhost:4000/video/' + videoID + '/data');
+      const respData = await resp.json();
+      setVideoData(respData)
     } catch (e) {
       console.log(e);
     }
@@ -23,7 +25,7 @@ const Home = () => {
       <div className="content-container">
           <video controls muted autoPlay>
             {/* QUESTION 6 */}
-            <source src={"REPLACE WITH YOUR CODE"} type="video/mp4"></source>
+            <source src={"http://localhost:4000/video/" + videoID} type="video/mp4"></source>
           </video>
           <h1>{ videoData.name }</h1>
       </div>

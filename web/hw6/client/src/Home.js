@@ -6,10 +6,13 @@ import Footer from './components/Footer';
 const Home = () => {
   const [videos, setVideos] = useState([]);
 
-  useEffect(() => {
+  useEffect(async () => {
     try {
       // QUESTION 2
-      // REPLACE WITH YOUR CODE
+      const resp = await fetch('http://localhost:4000/videos');
+      console.log(resp);
+      const respData = await resp.json();
+      setVideos(respData);
     } catch (e) {
       console.log(e);
     }

@@ -2,7 +2,7 @@ import React from 'react';
 function Header() {
     return (
         <header>
-            Cubstart Video
+            <a href="/">Cubstart Video</a>
         </header>
     );
 }
