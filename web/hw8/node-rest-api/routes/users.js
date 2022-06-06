@@ -3,7 +3,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
 // BEGIN PART 5
-
+const router = express.Router()
 // END PART 5
 
 // BEGIN PART 8

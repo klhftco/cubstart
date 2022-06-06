@@ -3,7 +3,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
 // BEGIN PART 5
-
+const router = express.Router()
 // END PART 5
 
 // BEGIN PART 6
@@ -16,7 +16,18 @@ router.post("/register", async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
     // CREATE NEW USER
+    const newUser = await new User({
+      username: req.body.username,
+      email: req.body.email,
+      password: hashedPassword,
+      description: req.body.description,
+      city: req.body.city,
+      from: req.body.from,
+      relationship: req.body.relationship,
+    });
 
+    const user = await newUser.save();
+    res.status(200).json(user);
     // SAVE NEW USER INTO MONGODB
   } catch (err) {
     console.log(err);

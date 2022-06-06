@@ -10,12 +10,25 @@ const multer = require("multer");
 const path = require("path");
 
 // BEGIN PART 3
+dotenv.config();
+
+mongoose.connect(
+  process.env.MONGO_URL,
+  { useNewUrlParser: true, useUnifidTopology: true, useCreateIndex: true },
+  () => {
+    console.log("");
+  }
+);
 
 const app = express();
 
-// "/api/auth"
-// "/api/users"
-// "/api/posts"
+app.use(express.json());
+app.use(helmet());
+app.use(morgna('common');
+
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
+app.use("/api/posts", postRoute);
 
 // END PART 3
 
@@ -40,6 +53,6 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   }
 });
 
-app.listen(8800, () => {
+app.listen(8080, () => {
   console.log("Node server is running!");
 });

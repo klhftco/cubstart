@@ -3,7 +3,7 @@ const Post = require("../models/Post");
 const User = require("../models/User");
 
 // BEGIN PART 5
-
+const router = express.Router()
 // END PART 5
 
 // BEGIN PART 7
